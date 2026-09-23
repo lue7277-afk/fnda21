@@ -92,26 +92,46 @@
                 </div>
             </a>
 
-            <!-- Navigation Links -->
+            <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
                 <a href="#routine-flow" class="hover:text-brand-green transition-colors">루틴 로직</a>
                 <a href="#app-simulator" class="hover:text-brand-green transition-colors">앱 시뮬레이터</a>
-                <a href="#campaign-assets" class="hover:text-brand-green transition-colors">기획서 & 쇼츠</a>
+                <a href="#campaign-assets" class="hover:text-brand-green transition-colors">홍보자료</a>
                 <a href="#food-menu" class="hover:text-brand-green transition-colors">메뉴 큐레이션</a>
                 <a href="#execution-plan" class="hover:text-brand-green transition-colors">실행 전략</a>
             </nav>
 
-            <div class="flex items-center gap-3">
-                <!-- 사전조사 메뉴 버튼 (./01/web1.html로 이동) -->
-                <a href="./01/web1.html" class="bg-emerald-500/10 hover:bg-emerald-500/20 border border-brand-green/40 text-brand-green font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition-all flex items-center gap-2 group shadow-lg shadow-emerald-500/10">
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- 사전조사 메뉴 버튼 -->
+                <a href="./01/web1.html" class="hidden sm:flex bg-emerald-500/10 hover:bg-emerald-500/20 border border-brand-green/40 text-brand-green font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm transition-all items-center gap-2 group shadow-lg shadow-emerald-500/10">
                     <i class="fa-solid fa-clipboard-question text-brand-green group-hover:rotate-12 transition-transform"></i>
                     <span>사전조사</span>
                 </a>
 
-                <button onclick="openModal()" class="gradient-bg hover:opacity-90 text-slate-950 font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+                <button onclick="openModal()" class="gradient-bg hover:opacity-90 text-slate-950 font-bold px-3.5 py-2 rounded-xl text-xs sm:text-sm transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-1.5 sm:gap-2">
                     <i class="fa-solid fa-bolt"></i>
                     <span>오픈 알림 신청</span>
                 </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-300 hover:text-white focus:outline-none rounded-lg bg-slate-900 border border-gray-800" aria-label="메뉴 열기">
+                    <i id="menu-icon" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800/80 bg-slate-950/95 backdrop-blur-xl px-5 pt-4 pb-6 space-y-3">
+            <a href="#routine-flow" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-gray-300 hover:text-brand-green transition-colors border-b border-gray-800/40">루틴 로직</a>
+            <a href="#app-simulator" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-gray-300 hover:text-brand-green transition-colors border-b border-gray-800/40">앱 시뮬레이터</a>
+            <a href="#campaign-assets" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-gray-300 hover:text-brand-green transition-colors border-b border-gray-800/40">홍보자료</a>
+            <a href="#food-menu" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-gray-300 hover:text-brand-green transition-colors border-b border-gray-800/40">메뉴 큐레이션</a>
+            <a href="#execution-plan" onclick="toggleMobileMenu()" class="block py-2 text-sm font-medium text-gray-300 hover:text-brand-green transition-colors border-b border-gray-800/40">실행 전략</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <a href="./01/web1.html" class="w-full bg-emerald-500/10 border border-brand-green/40 text-brand-green font-bold py-2.5 rounded-xl text-xs text-center flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-clipboard-question"></i>
+                    <span>사전조사 설문 참여</span>
+                </a>
             </div>
         </div>
     </header>
@@ -277,111 +297,137 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
                     <span class="text-xs font-bold text-brand-green tracking-widest uppercase">Promotional Materials</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">홍보 기획서 & 60초 쇼츠</h2>
-                    <p class="text-gray-400 text-sm">카드뉴스 6종 이미지 및 9:16 모바일 쇼츠 영상을 바로 확인해 보세요.</p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">홍보자료</h2>
+                    <p class="text-gray-400 text-sm">메인 포스터, 카드뉴스 6종 및 9:16 모바일 쇼츠 영상을 확인해 보세요.</p>
                 </div>
 
                 <!-- Tabs Navigation -->
-                <div class="flex justify-center mb-10 gap-3">
-                    <button onclick="switchTab('cards')" id="tab-cards-btn" class="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-green text-slate-950 transition-all shadow-lg">
+                <div class="flex justify-center mb-10 gap-2 sm:gap-3 flex-wrap">
+                    <button onclick="switchTab('poster')" id="tab-poster-btn" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-green text-slate-950 transition-all shadow-lg">
+                        <i class="fa-solid fa-image mr-1.5"></i> 메인 포스터
+                    </button>
+                    <button onclick="switchTab('cards')" id="tab-cards-btn" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 border border-gray-800 text-gray-300 hover:border-brand-green transition-all">
                         <i class="fa-solid fa-layer-group mr-1.5"></i> 카드뉴스 (6 Cards)
                     </button>
-                    <button onclick="switchTab('shorts')" id="tab-shorts-btn" class="px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 border border-gray-800 text-gray-300 hover:border-brand-green transition-all">
+                    <button onclick="switchTab('shorts')" id="tab-shorts-btn" class="px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 border border-gray-800 text-gray-300 hover:border-brand-green transition-all">
                         <i class="fa-solid fa-circle-play mr-1.5"></i> 60초 쇼츠 (mv.mp4)
                     </button>
                 </div>
 
-                <!-- Tab 1: Card News Grid -->
-                <div id="tab-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Card 1 -->
-                    <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col">
-                        <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                            <img src="card1.png" alt="Card 1" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2636/10b981?text=Card+1+Problem';">
-                            <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30">Card 1 · 문제 제기</span>
+                <!-- Tab 1: Main Poster Container -->
+                <div id="tab-poster" class="flex flex-col items-center justify-center space-y-4">
+                    <div class="glass-panel p-4 sm:p-6 rounded-3xl border border-gray-800 max-w-3xl w-full flex flex-col items-center shadow-2xl">
+                        <div class="relative w-full rounded-2xl overflow-hidden bg-slate-950 border border-gray-800">
+                            <img src="poster1.png" alt="ROUTINE O 메인 포스터" class="w-full h-auto object-contain max-h-[700px] mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/800x1130/1a2636/10b981?text=ROUTINE+O+Main+Poster';">
                         </div>
-                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                            <h3 class="text-base font-bold text-white">아침 피트니스 후 대기 시간의 지루함</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed">운동을 마치고 샤워 후 음식을 주문하면 발생하는 15분 이상의 불필요한 대기 시간 문제를 지적합니다.</p>
+                        <p class="text-xs text-gray-400 mt-4 text-center"><i class="fa-solid fa-circle-info text-brand-green mr-1"></i> ROUTINE O 브랜드 메인 공식 홍보 포스터</p>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Card News Carousel -->
+                <div id="tab-cards" class="hidden relative max-w-5xl mx-auto">
+                    <!-- Carousel Controls Header -->
+                    <div class="flex items-center justify-between mb-4 px-2 sm:px-4">
+                        <div class="text-xs font-bold text-gray-400 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-brand-green"></span>
+                            <span>카드뉴스 카드로 보기 (<span id="card-current-idx" class="text-brand-green font-extrabold text-sm">1</span> / 6)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="scrollCards('prev')" class="w-10 h-10 rounded-xl bg-slate-900 border border-gray-800 hover:border-brand-green text-brand-green flex items-center justify-center transition-all shadow-md active:scale-95 hover:bg-emerald-500/10">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button onclick="scrollCards('next')" class="w-10 h-10 rounded-xl bg-slate-900 border border-gray-800 hover:border-brand-green text-brand-green flex items-center justify-center transition-all shadow-md active:scale-95 hover:bg-emerald-500/10">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Card 2 -->
-                    <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col">
-                        <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                            <img src="card2.png" alt="Card 2" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2636/10b981?text=Card+2+Pain+Point';">
-                            <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30">Card 2 · Pain Point</span>
+                    <!-- Carousel Track -->
+                    <div id="card-carousel-track" class="flex gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-6 px-1 scrollbar-none scroll-smooth">
+                        <!-- Card 1 -->
+                        <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center">
+                            <div class="relative aspect-square bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img src="card1.png" alt="Card 1" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a2636/10b981?text=Card+1+Problem';">
+                                <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30 backdrop-blur-sm">Card 1 · 문제 제기</span>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                                <h3 class="text-base font-bold text-white">아침 피트니스 후 대기 시간의 지루함</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">운동을 마치고 샤워 후 음식을 주문하면 발생하는 15분 이상의 불필요한 대기 시간 문제를 지적합니다.</p>
+                            </div>
                         </div>
-                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                            <h3 class="text-base font-bold text-white">바쁜 직장인의 촉박한 출근 시간</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed">촉박한 출근 시간으로 인해 결국 건강한 아침 식사를 포기하게 되는 페인 포인트를 분석합니다.</p>
-                        </div>
-                    </div>
 
-                    <!-- Card 3 -->
-                    <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col">
-                        <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                            <img src="card3.png" alt="Card 3" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2636/10b981?text=Card+3+Solution';">
-                            <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30">Card 3 · 해결 방안</span>
+                        <!-- Card 2 -->
+                        <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center">
+                            <div class="relative aspect-square bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img src="card2.png" alt="Card 2" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a2636/10b981?text=Card+2+Pain+Point';">
+                                <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30 backdrop-blur-sm">Card 2 · Pain Point</span>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                                <h3 class="text-base font-bold text-white">바쁜 직장인의 촉박한 출근 시간</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">촉박한 출근 시간으로 인해 결국 건강한 아침 식사를 포기하게 되는 페인 포인트를 분석합니다.</p>
+                            </div>
                         </div>
-                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                            <h3 class="text-base font-bold text-white">ROUTINE O 샤워 전 모바일 예약 시스템</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed">샤워 전에 원하는 픽업 시간에 맞춰 미리 주문을 완료하는 차세대 솔루션을 소개합니다.</p>
-                        </div>
-                    </div>
 
-                    <!-- Card 4 -->
-                    <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col">
-                        <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                            <img src="card4.png" alt="Card 4" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2636/10b981?text=Card+4+Technology';">
-                            <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30">Card 4 · 핵심 기술</span>
+                        <!-- Card 3 -->
+                        <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center">
+                            <div class="relative aspect-square bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img src="card3.png" alt="Card 3" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a2636/10b981?text=Card+3+Solution';">
+                                <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30 backdrop-blur-sm">Card 3 · 해결 방안</span>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                                <h3 class="text-base font-bold text-white">ROUTINE O 샤워 전 모바일 예약 시스템</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">샤워 전에 원하는 픽업 시간에 맞춰 미리 주문을 완료하는 차세대 솔루션을 소개합니다.</p>
+                            </div>
                         </div>
-                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                            <h3 class="text-base font-bold text-white">실시간 타임키핑 & Smart Pick-up</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed">조리 타이머와 샤워 시간을 연동하여 샤워를 마치자마자 음식을 가져갈 수 있는 동선 연계 기술.</p>
-                        </div>
-                    </div>
 
-                    <!-- Card 5 -->
-                    <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col">
-                        <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                            <img src="card5.png" alt="Card 5" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2636/10b981?text=Card+5+Value';">
-                            <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30">Card 5 · 가치 강화</span>
+                        <!-- Card 4 -->
+                        <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center">
+                            <div class="relative aspect-square bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img src="card4.png" alt="Card 4" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a2636/10b981?text=Card+4+Technology';">
+                                <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30 backdrop-blur-sm">Card 4 · 핵심 기술</span>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                                <h3 class="text-base font-bold text-white">실시간 타임키핑 & Smart Pick-up</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">조리 타이머와 샤워 시간을 연동하여 샤워를 마치자마자 음식을 가져갈 수 있는 동선 연계 기술.</p>
+                            </div>
                         </div>
-                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                            <h3 class="text-base font-bold text-white">저당 · 고단백 영양 밸런스 큐레이션</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed">전문 셰프와 영양사가 설계한 최적의 식단으로 맛과 건강을 동시에 만족시키는 브랜드 가치 제공.</p>
-                        </div>
-                    </div>
 
-                    <!-- Card 6 -->
-                    <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col">
-                        <div class="relative aspect-video bg-slate-900 overflow-hidden flex items-center justify-center">
-                            <img src="card6.png" alt="Card 6" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1a2636/10b981?text=Card+6+Action';">
-                            <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30">Card 6 · 최종 Action</span>
+                        <!-- Card 5 -->
+                        <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center">
+                            <div class="relative aspect-square bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img src="card5.png" alt="Card 5" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a2636/10b981?text=Card+5+Value';">
+                                <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30 backdrop-blur-sm">Card 5 · 가치 강화</span>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                                <h3 class="text-base font-bold text-white">저당 · 고단백 영양 밸런스 큐레이션</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">전문 셰프와 영양사가 설계한 최적의 식단으로 맛과 건강을 동시에 만족시키는 브랜드 가치 제공.</p>
+                            </div>
                         </div>
-                        <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
-                            <h3 class="text-base font-bold text-white">사전 설문 및 론칭 알림 이벤트</h3>
-                            <p class="text-xs text-gray-400 leading-relaxed">지금 사전 조사 참여 시 첫 주문 할인 쿠폰 및 모닝 루틴 패키지 혜택을 제공합니다.</p>
+
+                        <!-- Card 6 -->
+                        <div class="glass-panel glass-panel-hover rounded-3xl overflow-hidden border border-gray-800 flex flex-col w-[280px] sm:w-[320px] md:w-[360px] flex-shrink-0 snap-center">
+                            <div class="relative aspect-square bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img src="card6.png" alt="Card 6" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x600/1a2636/10b981?text=Card+6+Action';">
+                                <span class="absolute top-3 left-3 bg-slate-950/80 text-brand-green font-bold text-[10px] px-2.5 py-1 rounded-lg border border-brand-green/30 backdrop-blur-sm">Card 6 · 최종 Action</span>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                                <h3 class="text-base font-bold text-white">사전 설문 및 론칭 알림 이벤트</h3>
+                                <p class="text-xs text-gray-400 leading-relaxed">지금 사전 조사 참여 시 첫 주문 할인 쿠폰 및 모닝 루틴 패키지 혜택을 제공합니다.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tab 2: 9:16 Shorts Video Container -->
-                <div id="tab-shorts" class="hidden flex flex-col items-center justify-center space-y-6">
-                    <div class="text-center max-w-md">
-                        <h3 class="text-xl font-bold text-white mb-1">60-Second Shorts Storyboard</h3>
-                        <p class="text-xs text-gray-400">"기다림 제로" 모닝 루틴 9:16 세로형 홍보 영상</p>
-                    </div>
-
-                    <!-- 9:16 Video Player Container -->
-                    <div class="w-full max-w-[340px] aspect-[9/16] bg-slate-950 rounded-[36px] overflow-hidden border-4 border-gray-800 shadow-2xl relative group">
-                        <video class="w-full h-full object-cover" controls autoplay muted loop playsinline>
-                            <source src="mv.mp4" type="video/mp4">
-                            브라우저가 비디오 태그를 지원하지 않습니다.
-                        </video>
-                        <div class="absolute top-4 left-4 bg-slate-950/80 backdrop-blur text-brand-green text-[10px] font-bold px-3 py-1 rounded-full border border-emerald-500/30 pointer-events-none">
-                            <i class="fa-solid fa-play text-[8px] mr-1"></i> 9:16 Shorts
+                <!-- Tab 3: 9:16 Shorts Video Container -->
+                <div id="tab-shorts" class="hidden flex flex-col items-center justify-center space-y-4">
+                    <div class="glass-panel p-4 sm:p-6 rounded-3xl border border-gray-800 max-w-sm w-full flex flex-col items-center shadow-2xl">
+                        <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-slate-950 border border-gray-800 flex items-center justify-center">
+                            <video controls class="w-full h-full object-cover rounded-2xl" poster="poster1.png">
+                                <source src="mv.mp4" type="video/mp4">
+                                <p class="text-xs text-gray-400 p-4 text-center">동영상을 재생할 수 없습니다.</p>
+                            </video>
                         </div>
+                        <p class="text-xs text-gray-400 mt-4 text-center"><i class="fa-solid fa-circle-info text-brand-green mr-1"></i> ROUTINE O 60초 모바일 쇼츠 영상 (9:16)</p>
                     </div>
                 </div>
             </div>
@@ -430,40 +476,148 @@
             </div>
         </section>
 
-        <!-- Execution Strategy Section -->
+        <!-- Execution Strategy & Checklist Section -->
         <section id="execution-plan" class="py-20 bg-slate-900/60 border-t border-gray-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-2xl mx-auto mb-12">
-                    <span class="text-xs font-bold text-brand-green tracking-widest uppercase">Action Strategy</span>
-                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">단계별 실행 전략 & KPI</h2>
-                    <p class="text-gray-400 text-sm mt-2">브랜드 론칭 및 현장 적용을 위한 체계적인 마일스톤</p>
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-bold text-brand-green tracking-widest uppercase">Action Strategy & Roadmap</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-1">단계별 실행 전략 체크리스트</h2>
+                    <p class="text-gray-400 text-sm mt-2">브랜드 론칭 및 현장 실행을 위한 마일스톤별 핵심 과제 및 KPI 달성 현황</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="glass-panel rounded-3xl p-6 border border-gray-800 space-y-3">
-                        <span class="text-xs font-bold text-brand-green bg-emerald-500/10 px-3 py-1 rounded-full">PHASE 1 · 오픈 전</span>
-                        <h3 class="text-base font-bold text-white">사전 수요 수집 & 타깃검증</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed">피트니스 센터 회원 대상 사전 설문조사 진행 및 프로모션 알림 신청자 확보.</p>
-                        <a href="./01/web1.html" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold underline hover:text-emerald-300 pt-2">
-                            <span>설문조사 포털 바로가기</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
+                <!-- Overall Progress Bar -->
+                <div class="glass-panel p-6 rounded-3xl border border-gray-800 mb-10 max-w-4xl mx-auto">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-brand-green"></i>
+                            <span class="text-sm font-bold text-white">실행 전략 전체 달성률</span>
+                        </div>
+                        <span id="checklist-progress-text" class="text-sm font-black text-brand-green">50% (6/12)</span>
+                    </div>
+                    <div class="w-full h-3 bg-slate-900 rounded-full overflow-hidden border border-gray-800">
+                        <div id="checklist-progress-bar" class="h-full gradient-bg transition-all duration-500 rounded-full" style="width: 50%;"></div>
+                    </div>
+                </div>
+
+                <!-- Phase Cards Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Phase 1 -->
+                    <div class="glass-panel rounded-3xl p-6 border border-gray-800 flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-brand-green bg-emerald-500/10 px-3 py-1 rounded-full">PHASE 1 · 오픈 전</span>
+                                <span class="text-[11px] text-gray-400 font-medium"><i class="fa-solid fa-clock mr-1"></i>D-14</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">사전 검증 & 인프라 구축</h3>
+                            <p class="text-xs text-gray-400">타깃 고객 수요 조사 및 스토어 입점 준비 단계</p>
+
+                            <!-- Checklist items -->
+                            <div class="pt-3 space-y-2.5">
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" checked onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">피트니스 센터 제휴 및 픽업 존 입점 협의</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" checked onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">샤워 전 QR 주문 & 타이머 모바일 웹 개발</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" checked onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">사전 설문조사 진행 및 얼리버드 수량 수집</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" checked onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">저당·고단백 메뉴 레시피 확정 및 영양 검증</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800/80 flex items-center justify-between">
+                            <a href="./01/web1.html" class="inline-flex items-center gap-1.5 text-xs text-brand-green font-bold hover:underline">
+                                <span>사전 설문조사 이동</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <span class="text-[11px] text-gray-400">KPI: 응답자 500명</span>
+                        </div>
                     </div>
 
-                    <div class="glass-panel rounded-3xl p-6 border border-gray-800 space-y-3">
-                        <span class="text-xs font-bold text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">PHASE 2 · 오픈 당일</span>
-                        <h3 class="text-base font-bold text-white">스마트 QR 현장 동선 구축</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed">락커룸 및 피트니스 출입구에 스마트 QR 태그 배치, 조리 예약 모바일 연동.</p>
+                    <!-- Phase 2 -->
+                    <div class="glass-panel rounded-3xl p-6 border border-gray-800 flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-teal-400 bg-teal-500/10 px-3 py-1 rounded-full">PHASE 2 · 오픈 당일</span>
+                                <span class="text-[11px] text-teal-300 font-medium"><i class="fa-solid fa-bolt mr-1"></i>D-DAY</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">현장 동선 연동 & 론칭</h3>
+                            <p class="text-xs text-gray-400">스마트 QR 태그 배치 및 첫 결제 프로모션 실행</p>
+
+                            <!-- Checklist items -->
+                            <div class="pt-3 space-y-2.5">
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" checked onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">락커룸 및 출입구 스마트 QR 패널 비치</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" checked onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">첫 주문 50% 할인 모닝 쿠폰 프로모션 발송</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">픽업존 보온·보냉 스토리지 및 타이머 세팅</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">실시간 조리/픽업 알림 현황판 운영</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800/80 flex items-center justify-between">
+                            <span class="text-xs text-teal-400 font-bold">대기시간 0분 달성</span>
+                            <span class="text-[11px] text-gray-400">KPI: 오픈일 100건</span>
+                        </div>
                     </div>
 
-                    <div class="glass-panel rounded-3xl p-6 border border-gray-800 space-y-3">
-                        <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">PHASE 3 · 오픈 후</span>
-                        <h3 class="text-base font-bold text-white">리텐션 & 루틴 리워드 패키지</h3>
-                        <p class="text-xs text-gray-400 leading-relaxed">주 5회 아침 출석 모닝 루틴 패스 출시 및 멤버십 혜택 강화로 재구매율 극대화.</p>
+                    <!-- Phase 3 -->
+                    <div class="glass-panel rounded-3xl p-6 border border-gray-800 flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full">PHASE 3 · 오픈 후</span>
+                                <span class="text-[11px] text-gray-400 font-medium"><i class="fa-solid fa-repeat mr-1"></i>정기 운영</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white">리텐션 & 루틴 리워드 패키지</h3>
+                            <p class="text-xs text-gray-400">주 5회 모닝 패스 정기구독 유도 및 재구매율 증대</p>
+
+                            <!-- Checklist items -->
+                            <div class="pt-3 space-y-2.5">
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">주 5회 출석 모닝 루틴 구독 패스 론칭</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">1차 구매자 대상 리텐션 쿠폰 자동 발행</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">운동 및 영양 섭취 기록 앱 연동 데이터 피드백</span>
+                                </label>
+                                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-900/80 border border-gray-800/80 hover:border-brand-green/40 cursor-pointer transition-all">
+                                    <input type="checkbox" onchange="updateChecklistProgress()" class="chk-item mt-0.5 accent-emerald-500 rounded w-4 h-4">
+                                    <span class="text-xs text-gray-200 leading-snug">주간 만족도 데이터 수집 및 서비스 개선</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800/80 flex items-center justify-between">
+                            <span class="text-xs text-cyan-400 font-bold">재구매율 65%+ 목표</span>
+                            <span class="text-[11px] text-gray-400">KPI: 구독자 300명</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <!-- Pre-order Modal -->
@@ -477,7 +631,8 @@
                 <h3 class="text-xl font-bold text-white">ROUTINE O 오픈 알림 신청</h3>
                 <p class="text-xs text-gray-400">오픈 소식과 함께 첫 주문 50% 할인 쿠폰을 보내드립니다.</p>
             </div>
-            <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+            
+            <form id="modal-form" onsubmit="handleModalSubmit(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-gray-300 mb-1">이름</label>
                     <input type="text" required placeholder="홍길동" class="w-full bg-slate-900 border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:border-brand-green focus:outline-none">
@@ -490,6 +645,13 @@
                     알림 및 쿠폰 신청하기
                 </button>
             </form>
+
+            <!-- Success Message Toast Container -->
+            <div id="modal-success-msg" class="hidden p-4 bg-emerald-500/10 border border-brand-green/50 rounded-2xl text-center space-y-2">
+                <i class="fa-solid fa-circle-check text-brand-green text-3xl"></i>
+                <h4 class="text-sm font-bold text-white">신청이 완료되었습니다!</h4>
+                <p class="text-xs text-gray-300">론칭 당일 문자로 특별 할인 쿠폰이 발송됩니다.</p>
+            </div>
         </div>
     </div>
 
@@ -509,68 +671,140 @@
     </footer>
 
     <script>
-        // Tab Switcher (Cards vs Shorts)
-        function switchTab(type) {
-            const tabCards = document.getElementById('tab-cards');
-            const tabShorts = document.getElementById('tab-shorts');
-            const btnCards = document.getElementById('tab-cards-btn');
-            const btnShorts = document.getElementById('tab-shorts-btn');
-
-            if (type === 'cards') {
-                tabCards.classList.remove('hidden');
-                tabShorts.classList.add('hidden');
-                btnCards.className = "px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-green text-slate-950 transition-all shadow-lg";
-                btnShorts.className = "px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 border border-gray-800 text-gray-300 hover:border-brand-green transition-all";
-            } else {
-                tabCards.classList.add('hidden');
-                tabShorts.classList.remove('hidden');
-                btnShorts.className = "px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-green text-slate-950 transition-all shadow-lg";
-                btnCards.className = "px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 border border-gray-800 text-gray-300 hover:border-brand-green transition-all";
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-xmark');
+                }
             }
         }
 
-        // App Simulator Controls
-        let selectedMinutes = 15;
-        function setTimer(min) {
-            selectedMinutes = min;
-            document.querySelectorAll('.timer-btn').forEach(btn => {
-                if (btn.innerText.includes(min + '분')) {
-                    btn.className = "timer-btn bg-brand-green text-slate-950 font-bold text-xs py-2.5 rounded-xl transition-all";
-                } else {
-                    btn.className = "timer-btn bg-slate-900 border border-gray-800 hover:border-brand-green text-xs font-bold py-2.5 rounded-xl text-gray-300 transition-all";
-                }
-            });
-            document.getElementById('status-timer').innerText = `${selectedMinutes}:00`;
-            document.getElementById('status-title').innerText = "샤워 전 결제 완료";
-            document.getElementById('status-desc').innerText = "조리가 시작되었습니다. 샤워 후 픽업대로 오세요!";
-        }
-
-        function triggerSimulate() {
-            const title = document.getElementById('status-title');
-            const timer = document.getElementById('status-timer');
-            const desc = document.getElementById('status-desc');
-
-            title.innerText = "🎉 조리 완료! 픽업 가능";
-            timer.innerText = "00:00";
-            desc.innerText = "샤워를 마치셨군요! 락커룸 앞 ROUTINE O 픽업대에서 수령하세요.";
-        }
-
-        // Modal Controls
         function openModal() {
-            document.getElementById('modal').classList.remove('hidden');
-            document.getElementById('modal').classList.add('flex');
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            }
         }
 
         function closeModal() {
-            document.getElementById('modal').classList.add('hidden');
-            document.getElementById('modal').classList.remove('flex');
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }
         }
 
-        function handleModalSubmit(e) {
-            e.preventDefault();
-            alert('오픈 알림 신청이 완료되었습니다! 론칭 당일 할인 쿠폰이 발송됩니다.');
-            closeModal();
+        function handleModalSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('modal-form');
+            const successMsg = document.getElementById('modal-success-msg');
+            if (form) form.classList.add('hidden');
+            if (successMsg) successMsg.classList.remove('hidden');
         }
+
+        function switchTab(tabName) {
+            const tabs = ['poster', 'cards', 'shorts'];
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                const btn = document.getElementById(`tab-${t}-btn`);
+                if (el) {
+                    if (t === tabName) {
+                        el.classList.remove('hidden');
+                        if (t === 'shorts' || t === 'poster') {
+                            el.classList.add('flex');
+                        }
+                    } else {
+                        el.classList.add('hidden');
+                        el.classList.remove('flex');
+                    }
+                }
+                if (btn) {
+                    if (t === tabName) {
+                        btn.className = 'px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-green text-slate-950 transition-all shadow-lg';
+                    } else {
+                        btn.className = 'px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-slate-900 border border-gray-800 text-gray-300 hover:border-brand-green transition-all';
+                    }
+                }
+            });
+        }
+
+        function scrollCards(direction) {
+            const track = document.getElementById('card-carousel-track');
+            const idxElem = document.getElementById('card-current-idx');
+            if (!track) return;
+
+            const cardWidth = track.firstElementChild ? track.firstElementChild.getBoundingClientRect().width + 24 : 300;
+            if (direction === 'next') {
+                track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            }
+
+            setTimeout(() => {
+                const scrollLeft = track.scrollLeft;
+                const currentIdx = Math.min(6, Math.max(1, Math.round(scrollLeft / cardWidth) + 1));
+                if (idxElem) idxElem.innerText = currentIdx;
+            }, 300);
+        }
+
+        function setTimer(minutes) {
+            const timerElem = document.getElementById('status-timer');
+            if (timerElem) {
+                timerElem.innerText = `${minutes}:00`;
+            }
+            const statusTitle = document.getElementById('status-title');
+            const statusDesc = document.getElementById('status-desc');
+            if (statusTitle) statusTitle.innerText = "샤워 전 결제 완료";
+            if (statusDesc) statusDesc.innerText = "조리가 시작되었습니다. 샤워 후 픽업대로 오세요!";
+            
+            const buttons = document.querySelectorAll('.timer-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(`${minutes}분`)) {
+                    btn.className = 'timer-btn bg-brand-green text-slate-950 font-bold text-xs py-2.5 rounded-xl transition-all';
+                } else {
+                    btn.className = 'timer-btn bg-slate-900 border border-gray-800 hover:border-brand-green text-xs font-bold py-2.5 rounded-xl text-gray-300 transition-all';
+                }
+            });
+        }
+
+        function triggerSimulate() {
+            const statusTitle = document.getElementById('status-title');
+            const statusTimer = document.getElementById('status-timer');
+            const statusDesc = document.getElementById('status-desc');
+
+            if (statusTitle) statusTitle.innerText = "🎉 조리 완료!";
+            if (statusTimer) statusTimer.innerText = "00:00";
+            if (statusDesc) statusDesc.innerText = "갓 조리된 식단이 픽업 박스에서 기다리고 있습니다. 맛있게 드세요!";
+        }
+
+        function updateChecklistProgress() {
+            const checkboxes = document.querySelectorAll('.chk-item');
+            if (!checkboxes || checkboxes.length === 0) return;
+            
+            let checkedCount = 0;
+            checkboxes.forEach(chk => {
+                if (chk.checked) checkedCount++;
+            });
+
+            const total = checkboxes.length;
+            const percent = Math.round((checkedCount / total) * 100);
+
+            const progressBar = document.getElementById('checklist-progress-bar');
+            const progressText = document.getElementById('checklist-progress-text');
+
+            if (progressBar) progressBar.style.width = `${percent}%`;
+            if (progressText) progressText.innerText = `${percent}% (${checkedCount}/${total})`;
+        }
+
+        // Initialize progress on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateChecklistProgress();
+        });
     </script>
 </body>
 </html>
